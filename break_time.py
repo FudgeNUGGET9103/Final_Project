@@ -1,47 +1,39 @@
-# import everything from tkinter module
-from tkinter import *
-  
-# import messagebox from tkinter module
-import tkinter.messagebox
-  
-# create a tkinter root window
-root = tkinter.Tk()
-  
-# root window title and dimension
-root.title("Picture time")
-root.geometry('500x300')
-  
-# Create a messagebox showinfo
-  
-def onClick():
-    tkinter.messagebox.showinfo("Would you like to take a picture?",  "Hi I'm your message")
-  
-# Create a Button
-button = Button(root, text="Yes", command=onClick, height=5, width=10)
-  
-# Set the position of button on the top of window.
-button.pack(side='bottom')
-root.mainloop()
-
-
-
-
 import webbrowser
 import time
+from tkinter import *
+import tkinter.messagebox
+import webbrowser
 
-
-
-total_breaks = 3
+total_breaks = 1
 break_count = 0
+root = tkinter.Tk()
+
+root.title("Would you like to take a picture?")
+root.geometry('500x300')
 
 print("this program started on" + time.ctime())
 while(break_count<total_breaks):
-    time.sleep(10)
-    webbrowser.open("https://www.youtube.com/watch?v=9tXVK7fh-kI")
+    time.sleep(5)
+    PosNeg = []
+
+    def yesClick():
+        tkinter.messagebox.showinfo("!",  "Say Cheese")
+
+    def noClick():
+        tkinter.messagebox.showinfo("Alright, no problem",  "See you in 10 days!")
+    
+    Button1 = Button(root, activebackground="blue", command=lambda:[yesClick(), PosNeg.append(1)], text="Yes",  height=5, width=10)
+    Button2 = Button(root, activebackground="red", command=lambda:[noClick(), PosNeg.append(0)], text="No", height=5, width=10)
+
+    Button1.pack(side=LEFT)
+    Button2.pack(side=RIGHT)
+    
+    root.mainloop()
+    if 1 in PosNeg:
+        webbrowser.open("https://docs.google.com/document/d/1rfOX_yNOablm8fOgGUvYkLISBOm6cUMJF7Y9O5LUKJU/edit#")
+    else:
+        water = 0
     break_count = break_count + 1
+    print(PosNeg)
 
-
-
-"""butter is the tasites"""
-print("sandwhich")
 
