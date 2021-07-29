@@ -1,22 +1,21 @@
-import webbrowser
 import time
 from tkinter import *
 import tkinter.messagebox
 import cv2
+import os
 
 
 
-total_breaks = 1
-break_count = 0
 root = tkinter.Tk()
-
 
 root.title("Would you like to take a picture?")
 root.geometry('500x300')
-
+total_breaks = 1
+break_count = 0
 print("this program started on" + time.ctime())
 while(break_count<total_breaks):
     time.sleep(3)
+    
     PosNeg = []
     def yesClick():
         tkinter.messagebox.showinfo("!",  "Say Cheese")
@@ -26,18 +25,20 @@ while(break_count<total_breaks):
     Button2 = Button(root, activebackground="red", command=lambda:[noClick(), PosNeg.append(0)], text="No", height=5, width=10)
     Button1.pack(side=LEFT)
     Button2.pack(side=RIGHT)   
-    root.mainloop()
+    
     if 1 in PosNeg:
         vid = cv2.VideoCapture(0)
+        ret, frame = vid.read()
         while(True):
-            ret, frame = vid.read()
             cv2.imshow('frame', frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
+                cv2.imwrite('Desktop/butter.jpg',frame)
+                cv2.destroyAllWindows()
                 break
-        vid.release()
-        cv2.destroyAllWindows()
+            vid.release()
+        
     else:
         water = 0
+    root.mainloop()        
     break_count = break_count + 1
-
-
+    PosNeg.clear()
