@@ -10,6 +10,7 @@ total_breaks = 1
 break_count = 0
 root = tkinter.Tk()
 
+
 root.title("Would you like to take a picture?")
 root.geometry('500x300')
 
