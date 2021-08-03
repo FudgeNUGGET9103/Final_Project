@@ -2,6 +2,25 @@ import time
 from datetime import date
 from tkinter import *
 import tkinter.messagebox
+print("Would you like to make a folder for your timelapse?")
+answer = input("Enter yes or no: ")
+               
+if answer == "yes":
+    import os
+    print("What would you like to name this file")
+    filename = input()
+    parent_dir = "Desktop/"
+    path = os.path.join(parent_dir, filename)
+    os.mkdir(path)
+    del os
+elif answer == "no":
+    import os
+    print("What existing folder would you like to use?")
+    filename = input()
+    parent_dir = "Desktop/"
+    path = os.path.join(parent_dir, filename)
+    os.mkdir(path)
+    del os
 
 break_count = 0
 total_break = 2
